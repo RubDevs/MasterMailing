@@ -6,13 +6,15 @@ const jwt = require("jsonwebtoken");
 module.exports = function (injectedStore) {
   let store = injectedStore;
 
-  async function save(subscriber) {
-    try {
-      await store.save(Model, subscriber);
-      return jwt.sign({ email: subscriber.email }, config.jwt.secret);
-    } catch (error) {
-      console.error(error);
-    }
+  function save(subscriber) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await store.save(Model, subscriber);
+        resolve(jwt.sign({ email: subscriber.email }, config.jwt.secret));
+      } catch (error) {
+        reject(error);
+      }
+    });
   }
 
   return {
