@@ -5,7 +5,7 @@ let store;
 
 if (config.dev) {
   //Dummy when development or test
-  store = require("../../../lib/dummy");
+  store = require("../../../lib/mongo");
 } else {
   //Mongo when production
   store = require("../../../lib/mongo");
