@@ -5,6 +5,7 @@ const Controller = require("./index");
 const validation = require("../../middlewares/validation");
 const superagent = require("superagent");
 const config = require("../../../config");
+const mailChimpData = require("../../../utils/mailChimpData");
 
 router.post("/register", function (req, res) {
   const { subscriber } = req.body;
@@ -19,19 +20,7 @@ router.post("/register", function (req, res) {
 
 router.post("/send", validation, (req, res) => {
   //Request to Mailchimp API
-  const data = {
-    members: [
-      {
-        email_address: req.email,
-        status: "subscribed",
-        merge_fields: {
-          FNAME: req.fname,
-          LNAME: req.lname,
-        },
-      },
-    ],
-  };
-  const postData = JSON.stringify(data);
+  const data = mailChimpData(req);
   const url = `${config.mailChimp.url}/${config.mailChimp.audience}`;
   superagent
     .post(url)
