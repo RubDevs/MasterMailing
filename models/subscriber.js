@@ -2,10 +2,13 @@ const mongoose = require("mongoose");
 
 const Subscriber = new mongoose.Schema(
   {
-    name: {
+    firstName: {
       type: String,
-      required: [true, "Please enter a full name"],
-      index: true,
+      required: [true, "Please enter firstname"],
+    },
+    lastName: {
+      type: String,
+      required: [true, "Please enter lastname"],
     },
     email: {
       type: String,

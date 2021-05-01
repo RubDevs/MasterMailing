@@ -9,11 +9,14 @@
   "author": "Ruben Hernandez <ruben@rubdevs.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "celebrate": "^14.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.7"
+    "mongoose": "^5.12.7",
+    "needle": "^2.6.0",
+    "superagent": "^6.1.0"
   }
 }

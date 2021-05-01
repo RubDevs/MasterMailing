@@ -6,7 +6,8 @@ function middleware(req, res, next) {
   jwt.verify(token, config.jwt.secret, (error, decoded) => {
     if (!error) {
       const email = decoded.email;
-      req[email] = email;
+      req["email"] = email;
+      (req["fname"] = decoded.firstName), (req["lname"] = decoded.lastName);
       next();
     } else {
       res.status(400).send({ error: "Invalid Token" });
