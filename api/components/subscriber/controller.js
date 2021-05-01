@@ -10,7 +10,16 @@ module.exports = function (injectedStore) {
     return new Promise(async (resolve, reject) => {
       try {
         await store.save(Model, subscriber);
-        resolve(jwt.sign({ email: subscriber.email }, config.jwt.secret));
+        resolve(
+          jwt.sign(
+            {
+              email: subscriber.email,
+              firstName: subscriber.firstName,
+              lastName: subscriber.lastName,
+            },
+            config.jwt.secret
+          )
+        );
       } catch (error) {
         reject(error);
       }
