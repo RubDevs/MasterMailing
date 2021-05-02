@@ -1,6 +1,9 @@
 const jwt = require("jsonwebtoken");
 const config = require("../../config");
 
+/**
+ * Verifies if a token is valid
+ */
 function middleware(req, res, next) {
   const { token } = req.body;
   jwt.verify(token, config.jwt.secret, (error, decoded) => {
