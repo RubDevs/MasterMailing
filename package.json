@@ -17,5 +17,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7",
     "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.6"
   }
 }

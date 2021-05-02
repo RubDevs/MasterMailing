@@ -3,9 +3,19 @@ const Model = require("../../../models/subscriber");
 const config = require("../../../config");
 const jwt = require("jsonwebtoken");
 
+/**
+ * Returns a set of DB operations functions 
+ * @param injectedStore - A DB instance
+ * @return {Function}
+ */
+
 module.exports = function (injectedStore) {
   let store = injectedStore;
-
+  /**
+   * Saves a subscriber to the DB and return a JWT
+   * @param {Object} subscriber - A subscriber Object
+   * @return {String} token
+   */
   function save(subscriber) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -25,7 +35,6 @@ module.exports = function (injectedStore) {
       }
     });
   }
-
   return {
     save,
   };

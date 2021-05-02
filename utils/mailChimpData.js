@@ -1,3 +1,8 @@
+/**
+ * Creates an object to send to Mailchimp
+ * @param {Request} req - The Request Object
+ */
+
 module.exports = (req) => {
   const data = {
     members: [
